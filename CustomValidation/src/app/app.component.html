@@ -1,0 +1,38 @@
+<div class="container mt-5">
+
+  <div class="form-area">
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label>Username</label>
+        <input 
+        class="form-control" 
+        type="text" 
+        name="userName"
+        formControlName="userName"> 
+        <div class="alert alert-danger" *ngIf = "fc.userName.invalid && fc.userName.touched">
+          <div *ngIf ='fc.userName.errors?.required'>User name is required.</div>
+          <div *ngIf = 'fc.userName.errors?.minlength'>User name must be atleast 5 characters.</div>
+          <div *ngIf = 'fc.userName.errors?.noSpaceValidator'>User name should not contain any spaces.</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" 
+        type="password" 
+        name= "password" 
+        formControlName="password"
+        > 
+        <div class="alert alert-danger" *ngIf = "fc.password.invalid && fc.password.touched">
+          <div *ngIf ='fc.password.errors?.required'>Password is required.</div>       
+        </div>   
+      </div>
+
+      <button class="btn btn-primary" type="Submit" [disabled] = "form.invalid">Submit</button>
+    </form>
+
+
+  </div>
+</div>

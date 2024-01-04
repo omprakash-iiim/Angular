@@ -1,0 +1,14 @@
+<div *ngFor=" let e of employees ; let index = index">
+    <h1>{{e.name}}</h1>
+    <button [routerLink]="['/employee',index]">Show Details</button>
+    <button [routerLink]="['/employee',index, e.designation]">Show Details and designation</button>
+
+    <br>
+    <!-- this will load the particular component only without refreshing the page-->
+    <a [routerLink]="['/employee',index]">Show Details</a>
+    <br>
+    <!--this will relaod the whole page-->
+    <a href="/employee/{{index}}">Show Details href</a>
+    <br>
+    
+</div>

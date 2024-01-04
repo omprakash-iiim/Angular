@@ -1,0 +1,46 @@
+First array element - {{postArray[0]}}
+<br>
+<br>
+<p>
+  <button (click)="addPost()">Add Name</button>
+</p>
+
+<div>
+  Elements using ngFor : 
+<!--<ul>
+  <li *ngFor = "let post of postArray"> {{post}}</li>
+</ul>
+-->
+<div *ngIf ='objArray.length > 0'> 
+<ul>
+  <li *ngFor="let post of objArray; let i = index"> 
+    {{i}} : {{post.name}}
+    <button (click)="onDelete(post)">Delete</button>
+    <button (click)="onDeleteUsingIndex(i)">Delete using index</button>
+  </li>
+</ul>
+</div>
+
+ <div *ngIf ='objArray.length == 0'>
+    No data found....
+</div>
+<!--<ul>
+  <li *ngFor="let post of objArray"> {{post | json}}</li>
+</ul>
+</div>
+-->
+ngTemplate : 
+<div *ngIf ='objArray.length > 0; then postlist  else noData'> </div>
+<ng-template #postlist>
+<ul>
+    <li *ngFor="let post of objArray; let i = index"> 
+      {{i}} : {{post.name}}
+      <button (click)="onDelete(post)">Delete</button>
+      <button (click)="onDeleteUsingIndex(i)">Delete using index</button>
+    </li>
+  </ul>
+</ng-template>  
+  
+  <ng-template #noData>
+      No data found again....
+  </ng-template>

@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th>
+        <p class="comp-name">Parent Component</p>
+      </th>
+      <th>
+        <p class="comp-name">Child Component</p>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>{{messageFromChild}}
+      {{outputMessage}}
+    </td>
+    <td><app-child [fromParent] = 'messageToChild' (messageEvent)='receiveMessage($event)'></app-child></td>
+  </tr>
+  </tbody>
+</table>
+
+
+

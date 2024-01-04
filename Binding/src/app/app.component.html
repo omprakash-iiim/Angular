@@ -1,0 +1,46 @@
+<!-- String interpollation examples -->
+{{interpolationEg}}
+<p>
+  {{ 1+2 }}
+</p>
+<img src = "{{imgUrl}}" alt="" width="400" height="300" >
+
+<!-- Property binding examples -->
+<img [src] = "imgUrl" alt="" width="400" height="300" >
+
+<!-- Class binding examples -->
+
+<h1 class ="text-red"> Class Binding </h1>
+<h1 [class.text-red] ="bool"> Conditional Class binding </h1>
+
+<!-- Style binding examples -->
+<!-- DOM object used instead of actual css properties -->
+<h2 [style.color] ="bool ? 'red' : 'blue'"> Conditional Style binding </h2>
+
+<!-- Event binding examples -->
+<button (click)="buttonClicked()">Click Me</button>
+
+
+<!-- Event filtering examples -->
+<p>
+    <input type="text" (keyup)="onKeyUp($event)">
+</p>
+<p>
+    <input type="text" (keyup.enter)="onKeyUpWithFilter()">
+</p>
+<!-- Template variable examples -->
+<p>
+    Fetch the value entered
+    <input type="text" (keyup.enter)="getValue($event)">
+</p>
+<p>
+  Fetch the value entered with template variable
+  <input type="text" (keyup.enter)="getTempalteVarValue(username.value)" #username>
+</p>
+
+<!-- Two way binding examples -->
+<p>
+  <input type="text" [(ngModel)] = "userName">
+  <br>
+  Entered Text : {{userName}}
+</p>

@@ -1,0 +1,11 @@
+<h1>Routing Demo</h1>
+<button routerLink="/">Home</button>
+<button routerLink="/employees" >Employee List</button>
+<br>
+Query params eg:
+<button routerLink="/employees" [queryParams] = "{page:1, sortBy:'newest'}">Employee List</button>
+<br>
+Navigate Programmtically : 
+<button (click) ="onSubmit()">Submit</button>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,67 @@
+<div class="container mt-5">
+
+  <div class="form-area">
+
+    <form #f = 'ngForm' (ngSubmit)="onSubmit(f)">
+
+      <div class="form-group">
+        <label>First Name</label>
+        <input 
+        class="form-control" 
+        type="text" 
+        placeholder="First Name" 
+        name="firstName" 
+        ngModel 
+        #firstName = 'ngModel' 
+        (change)="getValue(firstName)"
+        required
+        [ngClass]="{'is-invalid' : firstName.invalid && firstName.touched }"
+        minlength="5"
+        maxlength="20">
+        <div *ngIf = "firstName.errors?.required">
+          <div class="alert alert-danger" *ngIf = 'firstName.invalid && firstName.touched'>
+            First name is required.
+         </div>
+        </div>
+
+        <div *ngIf = "firstName.errors?.minlength">
+          <div class="alert alert-danger" *ngIf = 'firstName.invalid && firstName.touched'>
+            First name must be atleast 5 characters.
+         </div>
+        </div>
+      
+      </div>
+      
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" 
+        type="email" 
+        name= "email" 
+        [ngClass]="{'is-invalid' : email.invalid && email.touched }"
+        #email='ngModel' ngModel placeholder="Email" 
+        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+        required>
+        <div *ngIf = "email.errors?.required">
+          <div class="alert alert-danger" *ngIf = 'email.invalid && email.touched'>
+            Email is required.
+         </div>
+        </div>
+        <div *ngIf = "email.errors?.pattern">
+          <div class="alert alert-danger" *ngIf = 'email.invalid && email.touched'>
+            Invalid email address...
+         </div>
+        </div>
+      </div>
+
+      
+      <div class="form-group">
+        <label>Address</label>
+        <textarea cols="30" rows = "10" class="form-control" placeholder="Address" name="address" ngModel></textarea>
+      </div>
+
+      <button class="btn btn-primary" type="Submit"  [disabled] = "f.invalid">Submit</button>
+    </form>
+
+
+  </div>
+</div>

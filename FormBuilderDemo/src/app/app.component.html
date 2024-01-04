@@ -1,0 +1,59 @@
+<div class="container mt-5">
+
+  <div class="form-area">
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label>First Name</label>
+        <input 
+        class="form-control" 
+        type="text" 
+        placeholder="First Name" 
+        name="firstName"
+        formControlName="firstName"> 
+        <div class="alert alert-danger" *ngIf = "firstName.invalid && firstName.touched">
+          <div *ngIf ='firstName.errors?.required'>First name is required.</div>
+          <div *ngIf = 'firstName.errors?.minlength'>First name must be atleast 5 characters.</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" 
+        type="email" 
+        name= "email" 
+        formControlName="email"
+        >    
+      </div>
+
+      
+      <div class="form-group">
+        <label>Address</label>
+        <textarea cols="30" rows = "10" class="form-control" placeholder="Address" 
+        name="address"
+        formControlName="address"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Skills</label>
+        <input class="form-control" 
+        type="text" 
+        name= "skill"
+        #skill
+        (keyup.enter)="addSkills(skill)"
+        >
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let skill of Skills.controls; let i = index " >
+              {{skill.value}}
+              <a (click)="removeSkill(i)"  class="btn btn-sm btn-danger"> Delete </a>
+          </li>
+        </ul>
+      </div>
+
+      <button class="btn btn-primary" type="Submit" [disabled] = "form.invalid">Submit</button>
+    </form>
+
+
+  </div>
+</div>
